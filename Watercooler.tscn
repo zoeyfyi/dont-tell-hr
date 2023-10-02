@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcpd2mjtgcyph"]
+
+[ext_resource type="Texture2D" uid="uid://b5tcvsxyh5nkg" path="res://assets/watercooler.png" id="1_huw48"]
+[ext_resource type="Shader" path="res://outline2D.gdshader" id="1_kqbpg"]
+[ext_resource type="PackedScene" uid="uid://jnto5a1ssblo" path="res://Inventory.tscn" id="2_0xgwn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5tb8y"]
+resource_local_to_scene = true
+shader = ExtResource("1_kqbpg")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/inverse_colors = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nll6g"]
+size = Vector2(320, 160)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_br3b6"]
+radius = 222.002
+
+[node name="Watercooler" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5tb8y")
+scale = Vector2(8, 8)
+texture = ExtResource("1_huw48")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_nll6g")
+
+[node name="Inventory" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_0xgwn")]
+sprite = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory"]
+shape = SubResource("CircleShape2D_br3b6")

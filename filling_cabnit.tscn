@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://dymgdcnxxs3pu"]
+
+[ext_resource type="Texture2D" uid="uid://cn3dprogu0fay" path="res://assets/filling_cabnit.png" id="1_2q262"]
+[ext_resource type="Shader" path="res://outline2D.gdshader" id="1_bvavw"]
+[ext_resource type="PackedScene" uid="uid://jnto5a1ssblo" path="res://Inventory.tscn" id="2_l3vjf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2lw5k"]
+resource_local_to_scene = true
+shader = ExtResource("1_bvavw")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/inverse_colors = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_673at"]
+size = Vector2(320, 224)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6gaoj"]
+resource_local_to_scene = true
+shader = ExtResource("1_bvavw")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/inverse_colors = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_13b0w"]
+radius = 300.202
+
+[node name="FillingCabnit" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2lw5k")
+scale = Vector2(8, 8)
+texture = ExtResource("1_2q262")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_673at")
+
+[node name="Inventory" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_l3vjf")]
+material = SubResource("ShaderMaterial_6gaoj")
+sprite = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory"]
+shape = SubResource("CircleShape2D_13b0w")

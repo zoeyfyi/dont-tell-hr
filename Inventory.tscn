@@ -1,0 +1,113 @@
+[gd_scene load_steps=4 format=3 uid="uid://jnto5a1ssblo"]
+
+[ext_resource type="Script" path="res://Inventory.gd" id="1_r7152"]
+[ext_resource type="FontFile" uid="uid://ire0tx1155ya" path="res://assets/fonts/pixel_operator/PixelOperator8.ttf" id="4_c0cvd"]
+[ext_resource type="FontFile" uid="uid://ct0oe1mftx0mr" path="res://assets/fonts/pixel_operator/PixelOperator8-Bold.ttf" id="5_oc7ir"]
+
+[node name="Inventory" type="Area2D"]
+unique_name_in_owner = true
+script = ExtResource("1_r7152")
+
+[node name="SearchTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="Tooltips" type="Node2D" parent="."]
+
+[node name="FarTooltip" type="PanelContainer" parent="Tooltips"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(280, 80)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -40.0
+offset_right = 140.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.998947, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/FarTooltip"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("4_c0cvd")
+theme_override_fonts/bold_font = ExtResource("5_oc7ir")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center][color=gray]too far[/color][/center]"
+fit_content = true
+
+[node name="OpenTooltip" type="PanelContainer" parent="Tooltips"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(280, 80)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -40.0
+offset_right = 140.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.998947, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/OpenTooltip"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("4_c0cvd")
+theme_override_fonts/bold_font = ExtResource("5_oc7ir")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center]Open [b][color=yellow][lb]E[rb][/color][/b][/center]"
+fit_content = true
+
+[node name="SearchTooltip" type="PanelContainer" parent="Tooltips"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 80)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -48.0
+offset_right = 140.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.998947, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Tooltips/SearchTooltip"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tooltips/SearchTooltip/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/SearchTooltip/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("4_c0cvd")
+theme_override_fonts/bold_font = ExtResource("5_oc7ir")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[center]Search [b][color=yellow][lb]E[rb][/color][/b][/center]"
+fit_content = true
+
+[node name="SearchProgressBar" type="ProgressBar" parent="Tooltips/SearchTooltip/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2

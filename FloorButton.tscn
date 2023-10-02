@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7eagb7haycno"]
+
+[ext_resource type="Script" path="res://FloorButton.gd" id="1_6l3v6"]
+[ext_resource type="FontFile" uid="uid://ct0oe1mftx0mr" path="res://assets/fonts/pixel_operator/PixelOperator8-Bold.ttf" id="1_i8rjh"]
+[ext_resource type="FontFile" uid="uid://ire0tx1155ya" path="res://assets/fonts/pixel_operator/PixelOperator8.ttf" id="2_85ovh"]
+
+[node name="FloorButton" type="VBoxContainer"]
+script = ExtResource("1_6l3v6")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i8rjh")
+theme_override_font_sizes/font_size = 48
+text = "1"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_85ovh")
+theme_override_font_sizes/font_size = 24
+text = "XXX"
+horizontal_alignment = 1

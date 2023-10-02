@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cphrsjwg4tias"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_qe82d"]
+[ext_resource type="PackedScene" uid="uid://duhf7ldghqrsr" path="res://Worker.tscn" id="2_kpx41"]
+
+[node name="Player" type="Node2D" groups=["player"]]
+script = ExtResource("1_qe82d")
+
+[node name="Worker" parent="." instance=ExtResource("2_kpx41")]
+is_ai = false

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dalvgss755meg"]
+
+[ext_resource type="PackedScene" uid="uid://c4u58duu5wr34" path="res://HitBox.tscn" id="1_g1iqq"]
+[ext_resource type="Script" path="res://Bullet.gd" id="1_x0t31"]
+
+[sub_resource type="Gradient" id="Gradient_lge6k"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hn70k"]
+gradient = SubResource("Gradient_lge6k")
+width = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xatgd"]
+radius = 8.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_x0t31")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = SubResource("GradientTexture1D_hn70k")
+
+[node name="HitBox" parent="." instance=ExtResource("1_g1iqq")]
+damage = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_xatgd")

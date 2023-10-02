@@ -1,0 +1,277 @@
+[gd_scene load_steps=19 format=3 uid="uid://duhf7ldghqrsr"]
+
+[ext_resource type="Script" path="res://Worker.gd" id="1_hnhdy"]
+[ext_resource type="Shader" path="res://outline2D.gdshader" id="2_nlmvl"]
+[ext_resource type="Texture2D" uid="uid://caxcuoxinseph" path="res://assets/player_hand.png" id="2_tybfd"]
+[ext_resource type="Texture2D" uid="uid://c5p3wi6461cf0" path="res://assets/player.png" id="3_tn78i"]
+[ext_resource type="PackedScene" uid="uid://c37fk324cmur7" path="res://HurtBox.tscn" id="5_2qcgc"]
+[ext_resource type="AudioStream" uid="uid://c3unw4dm0iqo4" path="res://assets/sounds/shock.wav" id="6_ah81f"]
+[ext_resource type="AudioStream" uid="uid://yy28yoij25e0" path="res://assets/sounds/run.wav" id="7_r1iap"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnxr5"]
+resource_local_to_scene = true
+shader = ExtResource("2_nlmvl")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/inverse_colors = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h8rbk"]
+radius = 41.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jhntt"]
+radius = 53.0
+height = 196.0
+
+[sub_resource type="Animation" id="Animation_d0mkg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftHandSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, -60)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightHandSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 60)]
+}
+
+[sub_resource type="Animation" id="Animation_8inje"]
+resource_name = "jab"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightHandSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(8, 60), Vector2(100, 24), Vector2(8, 60)]
+}
+
+[sub_resource type="Animation" id="Animation_5pwdr"]
+resource_name = "run"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftHandSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(8, -60), Vector2(48, -60), Vector2(48, -60), Vector2(-32, -60), Vector2(-32, -60)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightHandSprite:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(8, 60), Vector2(-32, 60), Vector2(-32, 60), Vector2(48, 60), Vector2(48, 60)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3k1jf"]
+_data = {
+"RESET": SubResource("Animation_d0mkg"),
+"jab": SubResource("Animation_8inje"),
+"run": SubResource("Animation_5pwdr")
+}
+
+[sub_resource type="Animation" id="Animation_ms1wa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BodySprite:material:shader_parameter/inverse_colors")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/ShockAudioPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_equ4m"]
+resource_name = "shock"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BodySprite:material:shader_parameter/inverse_colors")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/ShockAudioPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_83q0w"]
+_data = {
+"RESET": SubResource("Animation_ms1wa"),
+"shock": SubResource("Animation_equ4m")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0pr2q"]
+bg_color = Color(0.992157, 0.317647, 0.486275, 1)
+
+[node name="Worker" type="Node2D" groups=["worker"]]
+script = ExtResource("1_hnhdy")
+
+[node name="Body" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 5
+collision_mask = 5
+
+[node name="LeftHandSprite" type="Sprite2D" parent="Body"]
+position = Vector2(8, -60)
+rotation = 1.5708
+scale = Vector2(8, 8)
+texture = ExtResource("2_tybfd")
+
+[node name="RightHandSprite" type="Sprite2D" parent="Body"]
+position = Vector2(8, 60)
+rotation = 1.5708
+scale = Vector2(8, 8)
+texture = ExtResource("2_tybfd")
+
+[node name="Weapon" type="Node2D" parent="Body/RightHandSprite"]
+unique_name_in_owner = true
+position = Vector2(0, -3.25)
+rotation = -1.5708
+scale = Vector2(0.125, 0.125)
+
+[node name="BodySprite" type="Sprite2D" parent="Body"]
+material = SubResource("ShaderMaterial_hnxr5")
+rotation = 1.5708
+scale = Vector2(8, 8)
+texture = ExtResource("3_tn78i")
+region_rect = Rect2(-8, -8, 146, 146)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_h8rbk")
+
+[node name="HurtBox" parent="Body" instance=ExtResource("5_2qcgc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/HurtBox"]
+shape = SubResource("CapsuleShape2D_jhntt")
+
+[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="Body"]
+libraries = {
+"": SubResource("AnimationLibrary_3k1jf")
+}
+
+[node name="EffectAnimationPlayer" type="AnimationPlayer" parent="Body"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_83q0w")
+}
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Body"]
+target_desired_distance = 40.0
+path_max_distance = 200.0
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="InteractionRayCast" type="RayCast2D" parent="Body"]
+target_position = Vector2(150, 2.08165e-12)
+collision_mask = 4
+
+[node name="ShockAudioPlayer" type="AudioStreamPlayer2D" parent="Body"]
+stream = ExtResource("6_ah81f")
+volume_db = 5.0
+
+[node name="RunAudioPlayer" type="AudioStreamPlayer2D" parent="Body"]
+stream = ExtResource("7_r1iap")
+volume_db = -7.983
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -99.0
+offset_bottom = -99.0
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 4)
+layout_mode = 0
+offset_left = -60.0
+offset_top = -93.0
+offset_right = 60.0
+offset_bottom = -85.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_0pr2q")
+show_percentage = false
+
+[node name="ArmorBar" type="ProgressBar" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 4)
+layout_mode = 0
+offset_left = -60.0
+offset_top = -82.0
+offset_right = 60.0
+offset_bottom = -74.0
+show_percentage = false
+
+[node name="ShockTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="EscapeTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="MistTimer" type="Timer" parent="."]
+autostart = true

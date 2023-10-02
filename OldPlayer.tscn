@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://codyb2m27fdfc"]
+
+[ext_resource type="Script" path="res://Worker.gd" id="1_q42lk"]
+[ext_resource type="Texture2D" uid="uid://lcasttbsebcy" path="res://icon.svg" id="1_x8i7a"]
+[ext_resource type="Shader" path="res://outline2D.gdshader" id="2_quged"]
+[ext_resource type="PackedScene" uid="uid://5k8bfwbothlj" path="res://ShockPen.tscn" id="4_13mwp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oes00"]
+radius = 79.1012
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnxr5"]
+shader = ExtResource("2_quged")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/inverse_colors = false
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_q42lk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oes00")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hnxr5")
+rotation = 1.5708
+texture = ExtResource("1_x8i7a")
+region_rect = Rect2(-8, -8, 146, 146)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="Weapon" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(45, 24)
+
+[node name="ShockPen" parent="Weapon" instance=ExtResource("4_13mwp")]

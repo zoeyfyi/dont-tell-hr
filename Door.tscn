@@ -1,0 +1,128 @@
+[gd_scene load_steps=8 format=3 uid="uid://dsrkhitbr8pyx"]
+
+[ext_resource type="Script" path="res://Door.gd" id="1_eepnh"]
+[ext_resource type="Shader" path="res://outline2D.gdshader" id="3_0nrl4"]
+[ext_resource type="Texture2D" uid="uid://bt8ugsaueldb0" path="res://assets/door.png" id="3_tttr7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jtoj"]
+size = Vector2(256, 128)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a47py"]
+radius = 88.0
+height = 342.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bi3tv"]
+resource_local_to_scene = true
+shader = ExtResource("3_0nrl4")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/inverse_colors = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnp0q"]
+size = Vector2(256, 32)
+
+[node name="Door" type="Node2D"]
+script = ExtResource("1_eepnh")
+interaction_distance = 400
+
+[node name="InwardArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2.08165e-12, 13)
+collision_mask = 0
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InwardArea"]
+position = Vector2(-2.08165e-12, 64)
+shape = SubResource("RectangleShape2D_4jtoj")
+
+[node name="OutwardArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2.08165e-12, -13)
+collision_mask = 0
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutwardArea"]
+position = Vector2(-2.08165e-12, -64)
+shape = SubResource("RectangleShape2D_4jtoj")
+
+[node name="Pivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-112, 0)
+
+[node name="InteractArea" type="Area2D" parent="Pivot"]
+unique_name_in_owner = true
+position = Vector2(49, 0)
+collision_layer = 32768
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/InteractArea"]
+position = Vector2(63, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_a47py")
+
+[node name="DoorBody" type="StaticBody2D" parent="Pivot"]
+unique_name_in_owner = true
+position = Vector2(112, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot/DoorBody"]
+material = SubResource("ShaderMaterial_bi3tv")
+scale = Vector2(8, 8)
+texture = ExtResource("3_tttr7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/DoorBody"]
+shape = SubResource("RectangleShape2D_hnp0q")
+
+[node name="OpenTooltip" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 40)
+offset_left = -76.0
+offset_top = 17.0
+offset_right = 74.0
+offset_bottom = 57.0
+scale = Vector2(0.998947, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OpenTooltip"]
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center]Open door [b][color=yellow][lb]E[rb][/color][/b][/center]"
+fit_content = true
+
+[node name="CloseTooltip" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 40)
+offset_left = -76.0
+offset_top = 17.0
+offset_right = 74.0
+offset_bottom = 57.0
+scale = Vector2(0.998947, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CloseTooltip"]
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center]Close door [b][color=yellow][lb]E[rb][/color][/b][/center]"
+fit_content = true
+
+[node name="FarTooltip" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 40)
+offset_left = -76.0
+offset_top = 17.0
+offset_right = 74.0
+offset_bottom = 57.0
+scale = Vector2(0.998947, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="FarTooltip"]
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center][color=gray]too far[/color][/center]"
+fit_content = true

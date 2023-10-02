@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2oj6ffmw3jcx"]
+
+[ext_resource type="Texture2D" uid="uid://co6ahlhqgg2c5" path="res://assets/plant.png" id="1_iolim"]
+[ext_resource type="Shader" path="res://outline2D.gdshader" id="1_pnhsu"]
+[ext_resource type="PackedScene" uid="uid://jnto5a1ssblo" path="res://Inventory.tscn" id="2_644yv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jsyru"]
+resource_local_to_scene = true
+shader = ExtResource("1_pnhsu")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/inverse_colors = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8x2i"]
+radius = 52.0865
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlplr"]
+radius = 203.062
+
+[node name="Plant" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jsyru")
+scale = Vector2(8, 8)
+texture = ExtResource("1_iolim")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_x8x2i")
+
+[node name="Inventory" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_644yv")]
+sprite = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory"]
+shape = SubResource("CircleShape2D_jlplr")

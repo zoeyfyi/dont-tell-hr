@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv3y160c6veqk"]
+
+[ext_resource type="Script" path="res://Item.gd" id="1_basf5"]
+[ext_resource type="Texture2D" uid="uid://lcasttbsebcy" path="res://icon.svg" id="1_gyxbj"]
+[ext_resource type="FontFile" uid="uid://ire0tx1155ya" path="res://assets/fonts/pixel_operator/PixelOperator8.ttf" id="3_r4boc"]
+[ext_resource type="FontFile" uid="uid://ct0oe1mftx0mr" path="res://assets/fonts/pixel_operator/PixelOperator8-Bold.ttf" id="4_xxq1p"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(2.08165e-12, 80)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+script = ExtResource("1_basf5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 32)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("1_gyxbj")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("3_r4boc")
+theme_override_fonts/bold_font = ExtResource("4_xxq1p")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "Item
+[color=light gray]some item description[/color]"
+fit_content = true

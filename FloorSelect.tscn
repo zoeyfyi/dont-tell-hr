@@ -1,0 +1,261 @@
+[gd_scene load_steps=12 format=3 uid="uid://sl4fgu38rmco"]
+
+[ext_resource type="Script" path="res://FloorSelect.gd" id="1_my44o"]
+[ext_resource type="Texture2D" uid="uid://q1may5pgc6eo" path="res://assets/skyscraper.png" id="1_nm412"]
+[ext_resource type="FontFile" uid="uid://cubov3d3ti5np" path="res://assets/fonts/04b_19/04B_19__.TTF" id="4_wst46"]
+[ext_resource type="FontFile" uid="uid://ct0oe1mftx0mr" path="res://assets/fonts/pixel_operator/PixelOperator8-Bold.ttf" id="5_eitou"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdwls"]
+bg_color = Color(0.509804, 0.898039, 0.45098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qglgq"]
+bg_color = Color(0.117647, 0.427451, 0.286275, 1)
+
+[sub_resource type="Animation" id="Animation_dl1ut"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1282)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/CharacterSelect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1922, 87)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/FloorSelect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2982, 87)]
+}
+
+[sub_resource type="Animation" id="Animation_xpe6j"]
+resource_name = "character_select"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/TextureRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1282), Vector2(2.08165e-12, -110)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/CharacterSelect:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1922, 87), Vector2(1922, 87), Vector2(716, 87)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/FloorSelect:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2982, 87), Vector2(2982, 87), Vector2(1922, 87)]
+}
+
+[sub_resource type="Animation" id="Animation_7jxr8"]
+resource_name = "floor_select"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/CharacterSelect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(716, 87), Vector2(-946, 87)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.08165e-12, -110)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/FloorSelect:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1922, 87), Vector2(1922, 87), Vector2(716, 87)]
+}
+
+[sub_resource type="Animation" id="Animation_og82c"]
+resource_name = "start"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/CharacterSelect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-946, 87), Vector2(-946, 1493)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/TextureRect:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, -110), Vector2(0, 1296)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/FloorSelect:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(716, 87), Vector2(716, 1493)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_souv1"]
+_data = {
+"RESET": SubResource("Animation_dl1ut"),
+"character_select": SubResource("Animation_xpe6j"),
+"floor_select": SubResource("Animation_7jxr8"),
+"start": SubResource("Animation_og82c")
+}
+
+[node name="FloorSelect" type="Node2D"]
+script = ExtResource("1_my44o")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 1282.0
+offset_right = 640.0
+offset_bottom = 1462.0
+grow_vertical = 0
+scale = Vector2(8, 8)
+texture = ExtResource("1_nm412")
+
+[node name="CharacterSelect" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 1922.0
+offset_top = 87.0
+offset_right = 2778.0
+offset_bottom = 983.002
+theme_override_constants/separation = 64
+
+[node name="Label" type="Label" parent="CanvasLayer/CharacterSelect"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = ExtResource("4_wst46")
+theme_override_font_sizes/font_size = 96
+text = "CHARACTER SELECT"
+horizontal_alignment = 1
+
+[node name="ProfileGrid" type="GridContainer" parent="CanvasLayer/CharacterSelect"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 64
+theme_override_constants/v_separation = 32
+columns = 5
+
+[node name="FloorSelect" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 2982.0
+offset_top = 87.0
+offset_right = 3838.0
+offset_bottom = 1020.0
+theme_override_constants/separation = 64
+
+[node name="Label" type="Label" parent="CanvasLayer/FloorSelect"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = ExtResource("4_wst46")
+theme_override_font_sizes/font_size = 96
+text = "FLOOR SELECT"
+horizontal_alignment = 1
+
+[node name="FloorGrid" type="GridContainer" parent="CanvasLayer/FloorSelect"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 64
+theme_override_constants/v_separation = 32
+columns = 5
+
+[node name="StartButton" type="Button" parent="CanvasLayer/FloorSelect"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(700, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_eitou")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_vdwls")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_qglgq")
+disabled = true
+text = "Waiting for players..."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "character_select"
+libraries = {
+"": SubResource("AnimationLibrary_souv1")
+}

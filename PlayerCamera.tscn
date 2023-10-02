@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cik1rt01tbbe3"]
+
+[node name="Camera2D" type="Camera2D"]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

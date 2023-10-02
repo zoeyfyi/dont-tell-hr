@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://boyap31f0iatp"]
+
+[ext_resource type="Texture2D" uid="uid://43k6g8007yxm" path="res://assets/bin.png" id="1_nrsdx"]
+[ext_resource type="PackedScene" uid="uid://jnto5a1ssblo" path="res://Inventory.tscn" id="2_wckm3"]
+[ext_resource type="Shader" path="res://outline2D.gdshader" id="3_0uh2v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ix1pa"]
+resource_local_to_scene = true
+shader = ExtResource("3_0uh2v")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/inverse_colors = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0bnwl"]
+radius = 88.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bse7f"]
+resource_local_to_scene = true
+shader = ExtResource("3_0uh2v")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/inverse_colors = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8unss"]
+radius = 171.143
+
+[node name="Bin" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ix1pa")
+scale = Vector2(8, 8)
+texture = ExtResource("1_nrsdx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_0bnwl")
+
+[node name="Inventory" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_wckm3")]
+material = SubResource("ShaderMaterial_bse7f")
+sprite = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory"]
+shape = SubResource("CircleShape2D_8unss")
